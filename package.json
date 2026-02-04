@@ -1,5 +1,7 @@
 {
   "name": "react-learning",
+  "homepage": "https://USERNAME.github.io/ReactAdminPanel",
+
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -7,6 +9,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
+    "predeploy": "npm run build",
+"deploy": "gh-pages -d build",
+
     "preview": "vite preview"
   },
   "dependencies": {
