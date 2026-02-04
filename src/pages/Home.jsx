@@ -1,0 +1,152 @@
+import React from "react";
+import CountUp from "react-countup";
+
+const Home = ({backendMessage}) => {
+  return (
+    <div className="w-full">
+  {/* Top Stats Cards */}
+
+<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-6">
+
+  {/* Total Users */}
+  <div className="stat shadow">
+    <div className="stat-figure text-primary">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        className="inline-block h-8 w-8 stroke-current"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"
+        ></path>
+      </svg>
+    </div>
+    <div className="stat-title text-black font-medium text-sm">Total Users</div>
+    <div className="stat-value text-primary">
+      <CountUp end={1245} duration={2} separator="," />
+    </div>
+  </div>
+
+  {/* Total Products */}
+  <div className="stat shadow">
+    <div className="stat-figure text-primary">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        className="inline-block h-8 w-8 stroke-current"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M20 13V7a2 2 0 00-2-2H6a2 2 0 00-2 2v6m16 0l-8 8-8-8"
+        />
+      </svg>
+    </div>
+    <div className="stat-title text-black font-medium text-sm">Total Products</div>
+    <div className="stat-value text-primary">
+      <CountUp end={320} duration={2} separator="," />
+    </div>
+  </div>
+
+  {/* Orders */}
+  <div className="stat shadow">
+    <div className="stat-figure text-primary">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        className="inline-block h-8 w-8 stroke-current"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M3 7h18M3 12h18M3 17h18"
+        />
+      </svg>
+    </div>
+    <div className="stat-title text-black font-medium text-sm">Orders</div>
+    <div className="stat-value text-primary">
+      <CountUp end={1580} duration={2} separator="," />
+    </div>
+  </div>
+
+  {/* Revenue */}
+  <div className="stat shadow">
+    <div className="stat-figure text-primary">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        className="inline-block h-8 w-8 stroke-current"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          d="M12 8c-3.866 0-7 1.343-7 3s3.134 3 7 3 7-1.343 7-3-3.134-3-7-3zm0 6v6"
+        />
+      </svg>
+    </div>
+    <div className="stat-title text-black font-medium text-sm">Revenue</div>
+    <div className="stat-value text-primary">
+      ₹<CountUp end={245000} duration={2} separator="," />
+    </div>
+  </div>
+
+</div>
+
+
+  {/* Charts + Activity Section */}
+  <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    
+    {/* Chart Section */}
+    <div className="lg:col-span-2 bg-base-100 p-6 rounded-xl shadow">
+      <h3 className="font-semibold mb-4">Sales Overview</h3>
+      <div className="h-64 flex justify-center items-center text-gray-400">
+        Chart Component Here
+      </div>
+    </div>
+
+    {/* Recent Activity */}
+    <div className="card bg-base-100 shadow-sm">
+  <div className="card-body">
+    <span className="badge badge-xs badge-warning">Most Popular</span>
+    <div className="flex justify-between">
+      <h2 className="text-3xl font-bold">Recent Activity</h2>
+      {/* <span className="text-xl">$29/mo</span> */}
+    </div>
+    <ul className="mt-6 flex flex-col gap-2 text-xs">
+      <li>
+        <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+        <span>New user registered</span>
+      </li>
+      <li>
+        <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+        <span>New order placed</span>
+      </li>
+      <li>
+        <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+        <span>Product added</span>
+      </li>
+      <li>
+        <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
+        <span>Settings updated</span>
+      </li>
+    </ul>
+  </div>
+</div>
+
+  </div>
+</div>
+
+  );
+}
+
+export default Home;
