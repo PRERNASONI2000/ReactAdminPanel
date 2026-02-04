@@ -1,11 +1,7 @@
 import React from "react";
 
 const Notification = () => {
-  return (
-    <div className="flex items-center justify-center h-screen bg-gray-100">
-      <h1 className="text-4xl font-bold text-blue-600">notification Page</h1>
-    </div>
-  );
-}
-
-export default Notification;
+  return ( <div className="w-full p-6"> gt </div> );
+};
+                                                                                                                                            
+export default Notification;                                                                               

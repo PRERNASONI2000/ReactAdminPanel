@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import Notification from "../pages/Notification";
 import {
   LayoutDashboard,
   Package,
@@ -11,6 +12,7 @@ import {
   LogOut,
   Menu,
 } from "lucide-react";
+import Login from "../pages/Login";
 
 const sidebarItems = [
   { title: "Dashboard", icon: <LayoutDashboard size={20} />, path: "/" },
@@ -69,10 +71,12 @@ const Sidebar = () => {
 
         {/* Logout */}
         <div className="absolute bottom-4 w-full px-4">
-          <button className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-slate-300 hover:bg-red-600 hover:text-white transition">
+         <NavLink to="/login">
+           <button className="w-full flex items-center gap-3 px-3 py-2 rounded-lg text-slate-300 hover:bg-red-600 hover:text-white transition">
             <LogOut size={20} />
             Logout
           </button>
+         </NavLink>
         </div>
       </aside>
 

@@ -5,13 +5,14 @@ import Dashboard from "./layout/Dashboard";
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
 import Settings from "./pages/Setting";
-import Resources from "./pages/Resources";
+import Orders from "./pages/Orders";
 import Supprt from "./pages/Support";
-import Courses from "./pages/Courses";
+import Products from "./pages/Products";
 import Notification from "./pages/Notification";
+import Users from "./pages/Users";
 import Login from "./pages/Login";
 import SignUp from "./pages/Signup";
-import ContactForm from "./pages/Contactform";
+import Analytics from "./pages/Analytics";
 
 
 
@@ -37,11 +38,12 @@ const App = () => {
       <Route index element={<Home />} />
       <Route path="profile" element={<Profile />} />
       <Route path="settings" element={<Settings />} />
-      <Route path="resources" element={<Resources />} />
+      <Route path="orders" element={<Orders />} />
       <Route path="support" element={<Supprt />} />
-      <Route path="courses" element={<Courses />} />
-      <Route path="notification" element={<Notification />} />
-      <Route path="contact" element={<ContactForm />} />
+      <Route path="products" element={<Products />} />
+      <Route path="users" element={<Users />} />
+      <Route path="analytics" element={<Analytics />} />
+      <Route path="notifications" element={<Notification />} />
 
     </Route>
 

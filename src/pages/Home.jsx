@@ -1,7 +1,26 @@
 import React from "react";
+import {
+  LineChart,
+  Line,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Tooltip,
+  ResponsiveContainer,
+} from "recharts";
+
 import CountUp from "react-countup";
 
-const Home = ({backendMessage}) => {
+const Home = () => {
+  const chartData = [
+  { name: "Jan", sales: 4000 },
+  { name: "Feb", sales: 3000 },
+  { name: "Mar", sales: 5000 },
+  { name: "Apr", sales: 4500 },
+  { name: "May", sales: 6000 },
+  { name: "Jun", sales: 5500 },
+];
+
   return (
     <div className="w-full">
   {/* Top Stats Cards */}
@@ -110,7 +129,15 @@ const Home = ({backendMessage}) => {
     <div className="lg:col-span-2 bg-base-100 p-6 rounded-xl shadow">
       <h3 className="font-semibold mb-4">Sales Overview</h3>
       <div className="h-64 flex justify-center items-center text-gray-400">
-        Chart Component Here
+         <ResponsiveContainer width="100%" height="100%">
+    <LineChart data={chartData}>
+      <CartesianGrid strokeDasharray="3 3" />
+      <XAxis dataKey="name" />
+      <YAxis />
+      <Tooltip />
+      <Line type="monotone" dataKey="sales" stroke="#6366f1" strokeWidth={3} />
+    </LineChart>
+  </ResponsiveContainer>
       </div>
     </div>
 
