@@ -1,0 +1,126 @@
+import React, { useState } from "react";
+import { NavLink } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
+
+const Login = () => {
+
+  // const navigate = useNavigate();
+
+  // navigate("/dashboard");
+   
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState({});
+
+  const validateForm = () => {
+    let newErrors = {};
+
+    if (!email) {
+      newErrors.email = "Email is required!";
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
+      newErrors.email = "Invalid email format!";
+    }
+
+    if (!password) {
+      newErrors.password = "Password is required!";
+    } else if (password.length < 6) {
+      newErrors.password = "Password must be at least 6 characters!";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+const handleSubmit = (e) => {
+  e.preventDefault();
+
+  if (!validateForm()) return;
+
+  if (email === "prernasoni2000@gmail.com" && password === "123456") {
+    localStorage.setItem("token", "dummy-token");
+    navigate("/dashboard");
+  } else {
+    alert("Invalid Credentials");
+  }
+};
+
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary to-secondary p-4">
+
+      <div className="bg-base-100 w-full max-w-md p-8 rounded-2xl shadow-xl">
+
+        {/* Logo / Title */}
+        <div className="text-center mb-6">
+          <h2 className="text-3xl font-bold text-primary">Welcome Back 👋</h2>
+          <p className="text-sm text-gray-500 mt-1">
+            Login to access your dashboard
+          </p>
+        </div>
+
+        {/* Form */}
+        <form onSubmit={handleSubmit} className="space-y-4">
+
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Email</span>
+            </label>
+            <input
+              type="email"
+              placeholder="Enter your email"
+              className={`input input-bordered w-full ${errors.email ? "input-error" : ""}`}
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            {errors.email && (
+              <p className="text-red-500 text-xs mt-1">{errors.email}</p>
+            )}
+          </div>
+
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Password</span>
+            </label>
+            <input
+              type="password"
+              placeholder="Enter your password"
+              className={`input input-bordered w-full ${errors.password ? "input-error" : ""}`}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            {errors.password && (
+              <p className="text-red-500 text-xs mt-1">{errors.password}</p>
+            )}
+          </div>
+
+          {/* Extra Options */}
+          <div className="flex items-center justify-between text-sm">
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input type="checkbox" className="checkbox checkbox-sm" />
+              Remember me
+            </label>
+            <NavLink to="/forgot-password" className="text-primary hover:underline">
+              Forgot password?
+            </NavLink>
+          </div>
+
+          {/* Button */}
+          <button className="btn btn-primary w-full">
+            Login
+          </button>
+
+        </form>
+
+        {/* Signup */}
+        <p className="text-sm text-center mt-5">
+          Don’t have an account?{" "}
+          <NavLink to="/signup" className="text-primary font-semibold">
+            Signup
+          </NavLink>
+        </p>
+
+      </div>
+    </div>
+  );
+};
+
+export default Login;

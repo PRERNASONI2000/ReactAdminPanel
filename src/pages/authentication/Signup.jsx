@@ -1,12 +1,17 @@
 import React, { useState } from "react";
 
-const Login = () => {
+const SignUp = () => {
+  const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState({});
 
   const validateForm = () => {
     let newErrors = {};
+
+    if (!username) {
+      newErrors.username = "Username is required!";
+    }
 
     if (!email) {
       newErrors.email = "Email is required!";
@@ -27,8 +32,8 @@ const Login = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validateForm()) {
-      console.log("Form Submitted ✅", { email, password });
-      alert("Login Successful!");
+      console.log("Form Submitted ✅", { username, email, password });
+      alert("Signup Successful!");
     }
   };
 
@@ -37,16 +42,32 @@ const Login = () => {
 
       <div className="bg-base-100 w-full max-w-md p-8 rounded-2xl shadow-xl">
 
-        {/* Logo / Title */}
+        {/* Title */}
         <div className="text-center mb-6">
-          <h2 className="text-3xl font-bold text-primary">Welcome Back 👋</h2>
+          <h2 className="text-3xl font-bold text-primary">Create Account ✨</h2>
           <p className="text-sm text-gray-500 mt-1">
-            Login to access your dashboard
+            Sign up to access your dashboard
           </p>
         </div>
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-4">
+
+          <div className="form-control">
+            <label className="label">
+              <span className="label-text">Username</span>
+            </label>
+            <input
+              type="text"
+              placeholder="Enter your name"
+              className={`input input-bordered w-full ${errors.username ? "input-error" : ""}`}
+              value={username}
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            {errors.username && (
+              <p className="text-red-500 text-xs mt-1">{errors.username}</p>
+            )}
+          </div>
 
           <div className="form-control">
             <label className="label">
@@ -80,29 +101,17 @@ const Login = () => {
             )}
           </div>
 
-          {/* Extra Options */}
-          <div className="flex items-center justify-between text-sm">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input type="checkbox" className="checkbox checkbox-sm" />
-              Remember me
-            </label>
-            <a href="#" className="text-primary hover:underline">
-              Forgot password?
-            </a>
-          </div>
-
-          {/* Button */}
           <button className="btn btn-primary w-full">
-            Login
+            Sign Up
           </button>
 
         </form>
 
-        {/* Signup */}
+        {/* Login Link */}
         <p className="text-sm text-center mt-5">
-          Don’t have an account?{" "}
-          <a href="/signup" className="text-primary font-semibold">
-            Signup
+          Already have an account?{" "}
+          <a href="/login" className="text-primary font-semibold">
+            Login
           </a>
         </p>
 
@@ -111,4 +120,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;

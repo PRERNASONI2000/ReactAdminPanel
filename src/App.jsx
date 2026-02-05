@@ -10,8 +10,9 @@ import Supprt from "./pages/Support";
 import Products from "./pages/Products";
 import Notification from "./pages/Notification";
 import Users from "./pages/Users";
-import Login from "./pages/Login";
-import SignUp from "./pages/Signup";
+import Login from "./pages/authentication/Login";
+import SignUp from "./pages/authentication/Signup";
+import ForgotPassword from "./pages/authentication/ForgetPassword";
 import Analytics from "./pages/Analytics";
 
 
@@ -31,6 +32,7 @@ const App = () => {
     {/* Public Pages */}
     <Route path="/login" element={<Login />} />
     <Route path="/signup" element={<SignUp />} />
+    <Route path="/forgot-password" element={<ForgotPassword />} />
 
     {/* Layout Route */}
     <Route path="/" element={<Dashboard />}>

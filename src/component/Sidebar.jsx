@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import Notification from "../pages/Notification";
+// import Notification from "../pages/Notification";
 import {
   LayoutDashboard,
   Package,
@@ -12,7 +12,7 @@ import {
   LogOut,
   Menu,
 } from "lucide-react";
-import Login from "../pages/Login";
+import Login from "../pages/authentication/Login";
 
 const sidebarItems = [
   { title: "Dashboard", icon: <LayoutDashboard size={20} />, path: "/" },
