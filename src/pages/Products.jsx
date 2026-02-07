@@ -46,8 +46,8 @@ const Products = () => {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-6">
         <div>
-          <h2 className="text-2xl font-semibold text-gray-800">Products List</h2>
-          <p className="text-sm text-gray-500">Manage all products here</p>
+          <h2 className="text-2xl font-semibold bg-base-100">Products List</h2>
+          <p className="text-sm">Manage all products here</p>
         </div>
         <div className="flex gap-3">
           <input
@@ -62,7 +62,7 @@ const Products = () => {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-xl shadow overflow-x-auto">
+      <div className="bg-base-100 rounded-xl shadow overflow-x-auto">
         <table className="table w-full">
           <thead>
             <tr className="text-gray-500">
