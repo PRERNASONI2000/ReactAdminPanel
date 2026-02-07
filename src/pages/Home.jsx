@@ -1,4 +1,5 @@
-import React from "react";
+import React , {useEffect} from "react";
+import { useNavigate } from "react-router-dom";
 import {
   LineChart,
   Line,
@@ -12,6 +13,14 @@ import {
 import CountUp from "react-countup";
 
 const Home = () => {
+ const navigate = useNavigate();
+  useEffect(()=>{
+    const token = localStorage.getItem("token");
+    if(!token){
+   navigate("/login")
+    }
+  },[])
+
   const chartData = [
   { name: "Jan", sales: 4000 },
   { name: "Feb", sales: 3000 },

@@ -1,12 +1,12 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
 
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
 
-  // navigate("/dashboard");
+  // navigate("/home");
    
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -38,7 +38,7 @@ const handleSubmit = (e) => {
 
   if (email === "prernasoni2000@gmail.com" && password === "123456") {
     localStorage.setItem("token", "dummy-token");
-    navigate("/dashboard");
+    navigate("/");
   } else {
     alert("Invalid Credentials");
   }
