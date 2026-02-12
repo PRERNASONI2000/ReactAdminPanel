@@ -1,5 +1,6 @@
-import React , {useEffect} from "react";
+import React , {useState, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
+import { getDashboardStats, getChartData, getRecentActivity } from "../api/dashboardApi";
 import {
   LineChart,
   Line,
@@ -21,14 +22,28 @@ const Home = () => {
     }
   },[])
 
-  const chartData = [
-  { name: "Jan", sales: 4000 },
-  { name: "Feb", sales: 3000 },
-  { name: "Mar", sales: 5000 },
-  { name: "Apr", sales: 4500 },
-  { name: "May", sales: 6000 },
-  { name: "Jun", sales: 5500 },
-];
+  const [stats, setStats] = useState(null);
+const [chartData, setChartData] = useState([]);
+const [activity, setActivity] = useState([]);
+
+useEffect(() => {
+  const token = localStorage.getItem("token");
+  if (!token) navigate("/login");
+
+  getDashboardStats().then(setStats);
+  getChartData().then(setChartData);
+  getRecentActivity().then(setActivity);
+}, []);
+
+
+//   const chartData = [
+//   { name: "Jan", sales: 4000 },
+//   { name: "Feb", sales: 3000 },
+//   { name: "Mar", sales: 5000 },
+//   { name: "Apr", sales: 4500 },
+//   { name: "May", sales: 6000 },
+//   { name: "Jun", sales: 5500 },
+// ];
 
   return (
     <div className="w-full">
@@ -55,7 +70,7 @@ const Home = () => {
     </div>
     <div className="stat-title text-black font-medium text-sm">Total Users</div>
     <div className="stat-value text-primary">
-      <CountUp end={1245} duration={2} separator="," />
+      <CountUp end={stats?.users || 0} />
     </div>
   </div>
 
@@ -78,7 +93,7 @@ const Home = () => {
     </div>
     <div className="stat-title text-black font-medium text-sm">Total Products</div>
     <div className="stat-value text-primary">
-      <CountUp end={320} duration={2} separator="," />
+      <CountUp end={stats?.products || 0} />
     </div>
   </div>
 
@@ -101,7 +116,7 @@ const Home = () => {
     </div>
     <div className="stat-title text-black font-medium text-sm">Orders</div>
     <div className="stat-value text-primary">
-      <CountUp end={1580} duration={2} separator="," />
+      <CountUp end={stats?.orders || 0} duration={2} separator="," />
     </div>
   </div>
 
@@ -124,7 +139,7 @@ const Home = () => {
     </div>
     <div className="stat-title text-black font-medium text-sm">Revenue</div>
     <div className="stat-value text-primary">
-      ₹<CountUp end={245000} duration={2} separator="," />
+      ₹<CountUp end={stats?.revenue || 0} duration={2} separator="," />
     </div>
   </div>
 
@@ -158,24 +173,9 @@ const Home = () => {
       <h2 className="text-3xl font-bold">Recent Activity</h2>
       {/* <span className="text-xl">$29/mo</span> */}
     </div>
-    <ul className="mt-6 flex flex-col gap-2 text-xs">
-      <li>
-        <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-        <span>New user registered</span>
-      </li>
-      <li>
-        <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-        <span>New order placed</span>
-      </li>
-      <li>
-        <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-        <span>Product added</span>
-      </li>
-      <li>
-        <svg xmlns="http://www.w3.org/2000/svg" className="size-4 me-2 inline-block text-success" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" /></svg>
-        <span>Settings updated</span>
-      </li>
-    </ul>
+    {activity.map((item, index) => (
+  <li key={index}>{item}</li>
+))}
   </div>
 </div>
 
